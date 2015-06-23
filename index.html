@@ -1,0 +1,61 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>Backbone.js Filter List Example</title>
+	</head>
+	<body>
+		<div id="mainContainer">	
+			<div id="contentContainer"></div>
+		</div>	
+		<script>
+			var myapp = {
+				model:{},
+				view:{},
+				collection:{},
+				router:{}
+			}
+		</script>
+		
+		<script id="list_container_tpl" type="text/template">
+		<div class="grid_5 listContainer">
+			<div class="box">
+				<h2 class="box_head grad_colour">Enter state</h2>
+					<div class="sorting">
+						<label for="searchState">State:</label>
+						<input class="" id="searchState" type="text" value="" placeholder="Enter your state">
+					</div>
+					<div class="block">
+					<ul id="matchingStates" class="list"></ul>
+				</div>
+			</div>
+		</div>
+		</script>
+
+		<script id="task_item_tpl" type="text/template">
+			<li class="state">
+				<h4 class="name searchItem"><%= name %></h4>
+			</li>
+		</script>	
+		
+		
+		<script type="text/javascript" src="libs/jquery.min.js"></script>
+		<script type="text/javascript" src="libs/underscore-min.js"></script>
+		<script type="text/javascript" src="libs/backbone.js"></script>		
+		
+		<script type="text/javascript" src="js/model.states.js"></script>
+		<script type="text/javascript" src="js/collection.states.js"></script>
+		<script type="text/javascript" src="js/views/view.statesContainer.js"></script>
+		<script type="text/javascript" src="js/views/view.statesItem.js"></script>
+		<script type="text/javascript" src="js/router.states.js"></script>	
+		
+<script>
+	// Start Backbone history a necessary step for bookmarkable URL's
+	Backbone.history.start();
+</script>
+	</body>
+</html>
+    
+	
+
