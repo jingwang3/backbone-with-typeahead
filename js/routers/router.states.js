@@ -9,8 +9,6 @@ myapp.router.States = Backbone.Router.extend({
 			collection:myapp.collection.states
 		});
 		$("#contentContainer").append(this.listContainerView.render().el);	
-		this.listContainerView.sorts()
-		console.log(this);
 	 }
 });
 

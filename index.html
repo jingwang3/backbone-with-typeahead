@@ -27,16 +27,14 @@
 						<input class="" id="searchState" type="text" value="" placeholder="Enter your state">
 					</div>
 					<div class="block">
-					<ul id="matchingStates" class="list"></ul>
+					<ul id="matchingStates" class="list" style="list-style: none;"></ul>
 				</div>
 			</div>
 		</div>
 		</script>
 
 		<script id="task_item_tpl" type="text/template">
-			<li class="state">
-				<h4 class="name searchItem"><%= name %></h4>
-			</li>
+			<%= name %>
 		</script>	
 		
 		
@@ -44,11 +42,11 @@
 		<script type="text/javascript" src="libs/underscore-min.js"></script>
 		<script type="text/javascript" src="libs/backbone.js"></script>		
 		
-		<script type="text/javascript" src="js/model.states.js"></script>
-		<script type="text/javascript" src="js/collection.states.js"></script>
+		<script type="text/javascript" src="js/models/model.states.js"></script>
+		<script type="text/javascript" src="js/collections/collection.states.js"></script>
 		<script type="text/javascript" src="js/views/view.statesContainer.js"></script>
 		<script type="text/javascript" src="js/views/view.statesItem.js"></script>
-		<script type="text/javascript" src="js/router.states.js"></script>	
+		<script type="text/javascript" src="js/routers/router.states.js"></script>	
 		
 <script>
 	// Start Backbone history a necessary step for bookmarkable URL's

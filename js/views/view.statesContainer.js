@@ -1,25 +1,6 @@
-/* Author: 
-
-*/
 myapp.view.StatesContainer = Backbone.View.extend({
-	events: {
-		"keyup #searchState" : "search",
-		"change #statesorting":"sorts"
-	},
 	render: function(data) {
 		$(this.el).html(this.template);
-		return this;
-	},
-	renderList : function(states){
-		$("#matchingStates").html("");
-
-		states.each(function(state){
-			var view = new myapp.view.StatesItem({
-				model: state,
-				collection: this.collection
-			});
-			$("#matchingStates").append(view.render().el);
-		});
 		return this;
 	},
 	initialize : function(){
@@ -30,20 +11,39 @@ myapp.view.StatesContainer = Backbone.View.extend({
 
 
 myapp.view.SearchAndSort = {
+	events: {
+		"keyup #searchState": "search",
+		"click .stateItem": "populate"
+	},
+	renderList : function(states, letters){
+		$("#matchingStates").html("");
+		if(states !==  null){
+			states.each(function(state){
+				var view = new myapp.view.StatesItem({
+					model: state,
+					collection: this.collection
+				});
+				var hintedState = $(view.render().el).html()
+				hintedState = hintedState.toLowerCase().replace(letters.toLowerCase(), "<strong>" + letters.toLowerCase() + "</strong>");
+				var hintedHTML = '<li class="state"><span class="name stateItem" style="text-transform: capitalize; cursor: pointer;">' + hintedState + '</span></li>';
+				$("#matchingStates").append(hintedHTML);
+			});
+		}
+		return this;
+	},
 	search: function(e){
 		var letters = $("#searchState").val();
 		if( letters.length > 0 ){
-			var results = this.collection.searchFull(letters);
+			var results = this.collection.search(letters);
 		}else{
-			var results = {};
+			var results = null;
 		}
-		
-		this.renderList(results);
-	},	
-	sorts: function(e){
-		var status = $("#statesorting").find("option:selected").val();
-		if(status == "") status = 0;
-		this.renderList(this.collection.currentStatus(status));
+		this.renderList(results, letters);
+	},
+	populate: function(e){
+		var letters = $(e.target)[0].innerText;
+		$('#searchState').val(letters);
+		this.renderList(null, letters);//empty out the typeahead list
 	}
 }
 
