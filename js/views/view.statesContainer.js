@@ -25,8 +25,8 @@ myapp.view.SearchAndSort = {
 				});
 				var hintedState = view.model.get('name');//use the backbone way of getting property out of the model
 				hintedState = hintedState.toLowerCase().replace(letters.toLowerCase(), "<strong>" + letters.toLowerCase() + "</strong>");
-				var hintedHTML = '<li class="state"><span class="name stateItem" style="text-transform: capitalize; cursor: pointer;">' + hintedState + '</span></li>';
-				$("#matchingStates").append(hintedHTML);
+				view.model.set({'displayName': hintedState});
+				$("#matchingStates").append(view.render().el);
 			});
 		}
 		return this;
