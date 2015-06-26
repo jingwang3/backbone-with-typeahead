@@ -6,7 +6,6 @@ myapp.view.StatesItem = Backbone.View.extend({
 	className: 'state',
 	events: {},
 	render: function(data) {
-		console.log(this.model.toJSON());
 		$(this.el).html(this.template(this.model.toJSON()));
 		return this;
 	},

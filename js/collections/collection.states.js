@@ -23,6 +23,10 @@ myapp.collection.States = Backbone.Collection.extend({
 			return data.get('displayOrder'); 
 		}));
 
+		//show only top 5 suggestions
+		results = new myapp.collection.States(results.first(5));
+		//console.log(_.first(results, 5));
+		// console.log(_(results.first(this, 5)));
 		return results;
 	}
 });
